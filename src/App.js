@@ -2,14 +2,6 @@ import "./App.css";
 import React from "react";
 import ResponsiveAppBar from "./AppBar";
 import { Route, Routes } from "react-router-dom";
-// import firebase from "firebase/app";
-// import "firebase/firestore";
-// import "firebase/auth";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { useCollectionData } from "react-firebase-hooks/firestore";
-// import { useRef } from "react";
-// import handleSubmit from "./handles";
-
 import Home from "./components/Home";
 import Products from "./components/Products";
 import About from "./components/About";
@@ -26,16 +18,7 @@ import ChalkReview from "./components/reviews/ChalkReview";
 import JumpRopeReview from "./components/reviews/JumpRopeReview";
 import BoxingGlovesReview from "./components/reviews/BoxingGlovesReview";
 import MedicineBallReview from "./components/reviews/MedicineBallReview";
-
-// firebase.initializeApp({
-//   apiKey: "AIzaSyARuewjpuDwZOPYspTRofdh9OWS6ESRvvM",
-//   authDomain: "webshopreactdb.firebaseapp.com",
-//   projectId: "webshopreactdb",
-//   storageBucket: "webshopreactdb.appspot.com",
-//   messagingSenderId: "970480440947",
-//   appId: "1:970480440947:web:6b0de17e7aee1e9a317c06",
-//   measurementId: "G-V4C7XJNHH3",
-// });
+import LoginHome from "./components/after_login/LoginHome";
 
 function App() {
   return (
@@ -61,6 +44,7 @@ function App() {
         <Route path="/jump-rope-review" element={<JumpRopeReview />} />
         <Route path="/boxing-gloves-review" element={<BoxingGlovesReview />} />
         <Route path="/medicine-ball-review" element={<MedicineBallReview />} />
+        <Route path="/login-home" element={<LoginHome />} />
       </Routes>
     </div>
   );

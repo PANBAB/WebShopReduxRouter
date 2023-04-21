@@ -1,19 +1,20 @@
 import React, { useState } from "react";
+import { getFirestore } from "firebase/firestore";
+import { firebaseApp } from "../../src/firebase_setup/firebase.js";
+import { auth } from "../../src/firebase_setup/firebase.js";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function SignIn() {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const db = getFirestore(firebaseApp);
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-  };
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -26,8 +27,18 @@ function SignIn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     console.log(
-      `Email: ${email}, Username: ${username}, Password: ${password}, Repeat Password: ${repeatPassword}`
+      `Email: ${email}, Password: ${password}, Repeat Password: ${repeatPassword}`
     );
   };
 
@@ -51,6 +62,7 @@ function SignIn() {
   return (
     <div className="signin-container">
       <h2>Sign In</h2>
+
       <form onSubmit={handleSubmit}>
         <label>
           <b>Email:</b>
@@ -62,11 +74,6 @@ function SignIn() {
           />
         </label>
         <span className="error">{emailError}</span>
-        <br />
-        <label>
-          <b> Username:</b>
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
         <br />
         <label>
           <b>Password:</b>

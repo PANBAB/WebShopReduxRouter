@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
-import css from "./Login.css";
-function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../src/firebase_setup/firebase.js";
+import "./Login.css";
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -16,7 +20,18 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Username: ${username}, Password: ${password}`);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        console.log(user);
+        navigate("/login-home");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log(`Email: ${email}, , Password: ${password}`);
   };
 
   return (
@@ -26,8 +41,8 @@ function Login() {
       </h2>
       <form onSubmit={handleSubmit}>
         <label>
-          <b>Username:</b>
-          <input type="text" value={username} onChange={handleUsernameChange} />
+          <b>Email:</b>
+          <input type="text" value={email} onChange={handleEmailChange} />
         </label>
         <br />
         <label>
