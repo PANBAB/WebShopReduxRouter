@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
-import ResponsiveAppBar from "./AppBar";
 import { Route, Routes } from "react-router-dom";
+import ResponsiveAppBar from "./AppBar";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import About from "./components/About";

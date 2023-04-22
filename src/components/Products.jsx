@@ -1,6 +1,7 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Grid,
@@ -12,9 +13,12 @@ import {
   CardActions,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { addToBasket } from "../redux/BasketSlice";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket.value);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +26,6 @@ function Products() {
         const response = await axios.get("https://y9vmo.mocklab.io/json/1");
         const data = response.data;
         setProducts(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -32,7 +35,16 @@ function Products() {
   }, []);
 
   function onAddToBasket(product) {
-    alert("You have added " + product.name + " to your basket!");
+    console.log(product.name);
+    dispatch(
+      addToBasket({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      })
+    );
+    console.log(basket);
   }
 
   return (

@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../src/firebase_setup/firebase.js";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../redux/AuthSlice.jsx";
 
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
+  const auth1 = useSelector((state) => state.auth.value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
+        dispatch(login());
+        console.log(auth1);
       } else {
         setAuthUser(null);
       }
@@ -18,26 +24,9 @@ const AuthDetails = () => {
     };
   }, []);
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("User signed out ");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
   return (
     <div>
-      {authUser ? (
-        <div>
-          <p>Signed In as {authUser.email}</p>
-          <button onClick={handleSignOut}>Sign Out</button>
-        </div>
-      ) : (
-        <p>Signed Out</p>
-      )}
+      {authUser ? <p>Signed In as {authUser.email}</p> : <p>You Signed Out</p>}
     </div>
   );
 };
