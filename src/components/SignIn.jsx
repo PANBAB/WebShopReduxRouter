@@ -98,7 +98,9 @@ function SignIn() {
         </label>
         <span className="error">{passwordError}</span>
         <br />
-        <button type="submit">Sign In</button>
+        <button type="submit">
+          <b>Register</b>
+        </button>
       </form>
     </div>
   );

@@ -24,7 +24,6 @@ function Login() {
       .then((userCredential) => {
         const user = userCredential.user;
 
-        console.log(user);
         navigate("/login-home");
       })
       .catch((error) => {
@@ -54,12 +53,16 @@ function Login() {
           />
         </label>
         <br />
-        <button type="submit">Login</button>
+        <button type="submit">
+          <b>Login</b>
+        </button>
       </form>
       <h4>Don't have an account? Please click the button below!</h4>
       <Link to="/signin">
         {" "}
-        <button>Sign Up</button>
+        <button>
+          <b>Register</b>
+        </button>
       </Link>
     </div>
   );

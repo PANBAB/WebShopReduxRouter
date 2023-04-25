@@ -7,6 +7,7 @@ import { auth } from "../src/firebase_setup/firebase.js";
 import AuthDetails from "../src/components/AuthDetails.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../src/redux/AuthSlice.jsx";
+import Profile from "../src/components/after_login/Profile.jsx";
 
 const ResponsiveAppBar = () => {
   const navigate = useNavigate();
@@ -41,10 +42,16 @@ const ResponsiveAppBar = () => {
         <Button variant="outlined">
           <Link to="/basket">Basket</Link>
         </Button>
+
         {auth1 ? (
-          <Button variant="outlined" onClick={handleSignOut}>
-            Sign Out
-          </Button>
+          <>
+            <Button variant="outlined" onClick={handleSignOut}>
+              Sign Out
+            </Button>
+            <Button variant="outlined">
+              <Link to="/profile">Profile</Link>
+            </Button>
+          </>
         ) : (
           <>
             <Button variant="outlined">

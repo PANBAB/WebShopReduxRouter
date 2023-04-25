@@ -2,6 +2,10 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Stack from "@mui/material/Stack";
 
 import {
   Grid,
@@ -18,7 +22,9 @@ import { addToBasket } from "../redux/BasketSlice";
 function Products() {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const basket = useSelector((state) => state.basket.value);
+  const isLoggedIn = useSelector((state) => state.auth.value);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +41,7 @@ function Products() {
   }, []);
 
   function onAddToBasket(product) {
-    console.log(product.name);
+    Navigate("/basket");
     dispatch(
       addToBasket({
         id: product.id,
@@ -44,7 +50,6 @@ function Products() {
         image: product.image,
       })
     );
-    console.log(basket);
   }
 
   return (
@@ -69,26 +74,61 @@ function Products() {
                 {product.price} €
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button
-                size="small"
-                color="secondary"
-                variant="contained"
-                component={Link}
-                to={product.url}
-              >
-                Reviews
-              </Button>
-              <Button
-                size="small"
-                color="secondary"
-                variant="outlined"
-                onClick={() => onAddToBasket(product)}
-              >
-                Add to
-                <ShoppingCartIcon fontSize="small" />
-              </Button>
-            </CardActions>
+            {isLoggedIn ? (
+              <CardActions>
+                <Button
+                  size="small"
+                  color="secondary"
+                  variant="contained"
+                  component={Link}
+                  to={product.url}
+                >
+                  Reviews
+                </Button>
+
+                <Button
+                  size="small"
+                  color="secondary"
+                  variant="outlined"
+                  onClick={() => onAddToBasket(product)}
+                >
+                  Add to
+                  <ShoppingCartIcon fontSize="small" />
+                </Button>
+              </CardActions>
+            ) : (
+              <CardActions>
+                <Stack sx={{ width: "100%" }} spacing={2}>
+                  <Alert severity="error">
+                    <AlertTitle>Info</AlertTitle>
+                    This is an error alert — <strong>check it out!</strong>
+                  </Alert>{" "}
+                </Stack>
+                <Button
+                  on
+                  size="small"
+                  color="error"
+                  disableElevation
+                  variant="contained"
+                  component={Link}
+                  to={product.url}
+                >
+                  Reviews
+                </Button>
+
+                <Button
+                  size="small"
+                  color="error"
+                  disableElevation
+                  variant="contained"
+                  component={Link}
+                  to={"/login"}
+                >
+                  Add to
+                  <ShoppingCartIcon fontSize="small" />
+                </Button>
+              </CardActions>
+            )}
           </Card>
         </Grid>
       ))}
