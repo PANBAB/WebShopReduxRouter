@@ -3,16 +3,12 @@
 }
 
 .Navbar{
-width: 60em;
-height: 5em;
-background-image :linear-gradient(to right, #14213d, #fca311, #ffd60a);
+background-color: black;
 border-radius: 1em; 
 display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 0 1em;
-scroll-behavior: smooth;
-
 
 }
 
@@ -28,11 +24,12 @@ scroll-behavior: smooth;
   }
   
   .LogIn {
-    justify-content: end;
+    justify-content: end; 
   }
 
   body{
-    background-image: url("https://images.unsplash.com/photo-1551125735-900f662aeb07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80");
+
+    background-image: url("https://images.unsplash.com/photo-1531736275454-adc48d079ce9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -51,9 +48,11 @@ button{
     cursor: pointer;
     border-radius: 1em;
     box-shadow: 0 0 0 0;
-    transition: 0.5s;
-  
+    transition: all 0.5s;
+}
 
+button:hover {
+  opacity: .8;
 }
 
 label {
@@ -61,4 +60,12 @@ label {
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.BasketHeader{
+  
+  left: 50px;
+  width: calc(100% - 100px);
+  padding: 5px;
+  text-align: center;
 }

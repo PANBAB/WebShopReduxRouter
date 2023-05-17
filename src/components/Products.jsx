@@ -2,10 +2,9 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import Stack from "@mui/material/Stack";
+import { useNavigate } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 import {
   Grid,
@@ -19,12 +18,29 @@ import {
 import { Link } from "react-router-dom";
 import { addToBasket } from "../redux/BasketSlice";
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function Products() {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const basket = useSelector((state) => state.basket.value);
   const isLoggedIn = useSelector((state) => state.auth.value);
+  const [open, setOpen] = React.useState(false);
+
+  const handleSnackbarClick = () => {
+    setOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,38 +56,38 @@ function Products() {
     fetchData();
   }, []);
 
-  function onAddToBasket(product) {
-    Navigate("/basket");
+  function onAddToBasket({ id, name, price, image }) {
+    handleSnackbarClick();
     dispatch(
       addToBasket({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
+        id,
+        name,
+        price,
+        image,
       })
     );
   }
 
   return (
     <Grid container spacing={3}>
-      {products.map((product) => (
-        <Grid item key={product.id} xs={12} sm={6} md={4}>
+      {products.map(({ image, name, price, url, id }) => (
+        <Grid item key={id} xs={12} sm={6} md={4}>
           <Card
             sx={{ height: "100%", display: "flex", flexDirection: "column" }}
           >
             <CardMedia
               sx={{ paddingTop: "56.25%" }}
-              image={product.image}
-              title={product.name}
+              image={image}
+              title={name}
             />
             <CardContent sx={{ flexGrow: 1 }}>
               <Typography gutterBottom variant="h5" component="h2">
-                {product.name}
+                {name}
               </Typography>
             </CardContent>
             <CardContent>
               <Typography variant="h6" color="secondary">
-                {product.price} €
+                {price} €
               </Typography>
             </CardContent>
             {isLoggedIn ? (
@@ -81,7 +97,7 @@ function Products() {
                   color="secondary"
                   variant="contained"
                   component={Link}
-                  to={product.url}
+                  to={url}
                 >
                   Reviews
                 </Button>
@@ -90,20 +106,27 @@ function Products() {
                   size="small"
                   color="secondary"
                   variant="outlined"
-                  onClick={() => onAddToBasket(product)}
+                  onClick={() => onAddToBasket({ id, name, price, image })}
                 >
                   Add to
                   <ShoppingCartIcon fontSize="small" />
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={2000}
+                    onClose={handleSnackbarClose}
+                  >
+                    <Alert
+                      onClose={handleSnackbarClose}
+                      severity="success"
+                      sx={{ width: "100%" }}
+                    >
+                      Item successfully added to basket!
+                    </Alert>
+                  </Snackbar>
                 </Button>
               </CardActions>
             ) : (
               <CardActions>
-                <Stack sx={{ width: "100%" }} spacing={2}>
-                  <Alert severity="error">
-                    <AlertTitle>Info</AlertTitle>
-                    This is an error alert — <strong>check it out!</strong>
-                  </Alert>{" "}
-                </Stack>
                 <Button
                   on
                   size="small"
@@ -111,7 +134,7 @@ function Products() {
                   disableElevation
                   variant="contained"
                   component={Link}
-                  to={product.url}
+                  to={url}
                 >
                   Reviews
                 </Button>
@@ -121,11 +144,23 @@ function Products() {
                   color="error"
                   disableElevation
                   variant="contained"
-                  component={Link}
-                  to={"/login"}
+                  onClick={() => handleSnackbarClick()}
                 >
                   Add to
                   <ShoppingCartIcon fontSize="small" />
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={2000}
+                    onClose={handleSnackbarClose}
+                  >
+                    <Alert
+                      onClose={handleSnackbarClose}
+                      severity="warning"
+                      sx={{ width: "100%" }}
+                    >
+                      You must be logged in to add items to your basket!
+                    </Alert>
+                  </Snackbar>
                 </Button>
               </CardActions>
             )}

@@ -40,16 +40,20 @@ function Login() {
       </h2>
       <form onSubmit={handleSubmit}>
         <label>
-          <b>Email:</b>
-          <input type="text" value={email} onChange={handleEmailChange} />
+          <input
+            type="text"
+            value={email}
+            onChange={handleEmailChange}
+            placeholder="Email"
+          />
         </label>
         <br />
         <label>
-          <b>Password:</b>
           <input
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            placeholder="Password"
           />
         </label>
         <br />

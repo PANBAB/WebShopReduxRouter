@@ -12,7 +12,7 @@ import {
 import AddCommentRoundedIcon from "@mui/icons-material/AddCommentRounded";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 
-const BoxingGlovesReview = ({ productId }) => {
+const DumbellSetReview = ({ productId }) => {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState("");
 
@@ -58,13 +58,13 @@ const BoxingGlovesReview = ({ productId }) => {
 
   return (
     <div>
-      <Typography variant="h1" component="h2" gutterBottom>
-        Boxing Gloves Review
+      <Typography variant="h2" component="h2" gutterBottom>
+        Boxing Gloves reviews
       </Typography>
 
       <AddCommentRoundedIcon color="primary" />
       <TextField
-        label="Give your opinion about theses boxing gloves"
+        label="Give your opinion about this dumbell set"
         value={newReview}
         onChange={handleNewReviewChange}
         margin="dense"
@@ -90,4 +90,4 @@ const BoxingGlovesReview = ({ productId }) => {
   );
 };
 
-export default BoxingGlovesReview;
+export default DumbellSetReview;

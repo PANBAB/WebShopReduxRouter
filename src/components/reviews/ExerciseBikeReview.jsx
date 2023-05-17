@@ -23,8 +23,8 @@ const ExerciseBikeReview = ({ productId }) => {
     }
   }, [productId]);
 
-  const handleNewReviewChange = (event) => {
-    setNewReview(event.target.value);
+  const handleNewReviewChange = ({ target: { value } }) => {
+    setNewReview(value);
   };
 
   const handleAddReview = () => {

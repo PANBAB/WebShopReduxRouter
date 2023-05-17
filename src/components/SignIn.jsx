@@ -65,35 +65,33 @@ function SignIn() {
 
       <form onSubmit={handleSubmit}>
         <label>
-          <b>Email:</b>
           <input
             type="text"
             value={email}
             onChange={handleEmailChange}
             onBlur={validateEmail}
+            placeholder="Enter email"
           />
         </label>
         <span className="error">{emailError}</span>
         <br />
         <label>
-          <b>Password:</b>
           <input
             type="password"
             value={password}
             onChange={handlePasswordChange}
             onBlur={validatePassword}
+            placeholder="Enter password"
           />
         </label>
         <br />
         <label>
-          <b>
-            Repeat<br></br> Password:
-          </b>
           <input
             type="password"
             value={repeatPassword}
             onChange={handleRepeatPasswordChange}
             onBlur={validatePassword}
+            placeholder="Repeat password"
           />
         </label>
         <span className="error">{passwordError}</span>

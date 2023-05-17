@@ -19,7 +19,12 @@ const LoginHome = () => {
           but it a nice idea to make something for exercise and sell "exercise
           equipment". Thank you.
         </p>
-        <Button variant="outlined" component={Link} to="/products">
+        <Button
+          variant="contained"
+          component={Link}
+          to="/products"
+          color="info"
+        >
           Explore Products
         </Button>
       </div>

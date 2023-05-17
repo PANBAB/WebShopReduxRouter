@@ -15,6 +15,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const firebase = require("./firebase");
+require("firebase/firestore");
 
 export const auth = getAuth();
 export const firebaseApp = app;
