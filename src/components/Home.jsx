@@ -21,7 +21,7 @@ const Home = () => {
           variant="contained"
           component={Link}
           to="/products"
-          color="error"
+          color="primary"
         >
           Explore Products
         </Button>

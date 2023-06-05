@@ -18,6 +18,7 @@ import JumpRopeReview from "./components/reviews/JumpRopeReview";
 import BoxingGlovesReview from "./components/reviews/BoxingGlovesReview";
 import MedicineBallReview from "./components/reviews/MedicineBallReview";
 import LoginHome from "./components/after_login/LoginHome";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path="/boxing-gloves-review" element={<BoxingGlovesReview />} />
         <Route path="/medicine-ball-review" element={<MedicineBallReview />} />
         <Route path="/login-home" element={<LoginHome />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

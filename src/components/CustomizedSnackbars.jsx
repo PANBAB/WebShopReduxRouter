@@ -11,11 +11,11 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function CustomizedSnackbars() {
   const [open, setOpen] = React.useState(false);
 
-  const handleClick = () => {
+  const handleSnackbarClick = () => {
     setOpen(true);
   };
 
-  const handleClose = (event, reason) => {
+  const handleSnackbarClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
@@ -25,11 +25,19 @@ export default function CustomizedSnackbars() {
 
   return (
     <Stack spacing={2} sx={{ width: "100%" }}>
-      <Button variant="outlined" onClick={handleClick}>
+      <Button variant="outlined" onClick={handleSnackbarClick}>
         Open success snackbar
       </Button>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
           This is a success message!
         </Alert>
       </Snackbar>

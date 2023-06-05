@@ -86,7 +86,7 @@ function Products() {
               </Typography>
             </CardContent>
             <CardContent>
-              <Typography variant="h6" color="secondary">
+              <Typography variant="h6" color="primary">
                 {price} €
               </Typography>
             </CardContent>
@@ -130,7 +130,7 @@ function Products() {
                 <Button
                   on
                   size="small"
-                  color="error"
+                  color="primary"
                   disableElevation
                   variant="contained"
                   component={Link}
@@ -143,7 +143,7 @@ function Products() {
                   size="small"
                   color="error"
                   disableElevation
-                  variant="contained"
+                  variant="outlined"
                   onClick={() => handleSnackbarClick()}
                 >
                   Add to
