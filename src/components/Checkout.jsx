@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Button, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function CheckoutForm() {
   const [formData, setFormData] = useState({
@@ -124,8 +125,8 @@ function CheckoutForm() {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary" type="submit">
-              Submit
+            <Button variant="contained" color="primary">
+              <Link to="/after-checkout-transfer">Submit</Link>
             </Button>
           </Grid>
         </Grid>

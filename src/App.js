@@ -19,6 +19,7 @@ import BoxingGlovesReview from "./components/reviews/BoxingGlovesReview";
 import MedicineBallReview from "./components/reviews/MedicineBallReview";
 import LoginHome from "./components/after_login/LoginHome";
 import Checkout from "./components/Checkout";
+import AfterCheckoutTransfer from "./components/AfterCheckoutTransfer";
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
         <Route path="/medicine-ball-review" element={<MedicineBallReview />} />
         <Route path="/login-home" element={<LoginHome />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/after-checkout-transfer"
+          element={<AfterCheckoutTransfer />}
+        />
       </Routes>
     </div>
   );

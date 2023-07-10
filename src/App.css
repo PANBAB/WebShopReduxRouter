@@ -65,7 +65,9 @@ label {
 .BasketHeader{
   
   left: 50px;
-  width: calc(100% - 100px);
+  width: calc(100% - 100px);  
   padding: 5px;
   text-align: center;
 }
+
+

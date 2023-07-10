@@ -112,15 +112,25 @@ function Products() {
                   <ShoppingCartIcon fontSize="small" />
                   <Snackbar
                     open={open}
-                    autoHideDuration={2000}
+                    autoHideDuration={3000}
                     onClose={handleSnackbarClose}
                   >
                     <Alert
                       onClose={handleSnackbarClose}
-                      severity="success"
+                      severity="info"
                       sx={{ width: "100%" }}
                     >
                       Item successfully added to basket!
+                      <Button
+                        onClick={() => Navigate("/basket")}
+                        variant="contained"
+                        color="error"
+                        size="small"
+                        sx={{ marginLeft: "10px" }}
+                      >
+                        {" "}
+                        See products in the basket
+                      </Button>
                     </Alert>
                   </Snackbar>
                 </Button>
@@ -150,7 +160,7 @@ function Products() {
                   <ShoppingCartIcon fontSize="small" />
                   <Snackbar
                     open={open}
-                    autoHideDuration={2000}
+                    autoHideDuration={3000}
                     onClose={handleSnackbarClose}
                   >
                     <Alert

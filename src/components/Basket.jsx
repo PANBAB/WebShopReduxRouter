@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Grid,
   Card,
@@ -9,12 +9,30 @@ import {
   Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { removeFromBasket } from "../redux/BasketSlice.jsx";
 
 function Basket() {
   const basket = useSelector((state) => state.basket.value);
-  console.log(basket);
+  const dispatch = useDispatch();
 
-  const totalPrice = basket.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = basket
+    .reduce((acc, item) => acc + item.price, 0)
+    .toFixed(2);
+
+  const handleRemoveFromBasket = (itemId) => {
+    dispatch(removeFromBasket(itemId));
+  };
+
+  if (basket.length === 0) {
+    return (
+      <Typography variant="h5" component="div">
+        <div className="BasketHeader">
+          <h1>Your basket is currently empty.</h1>
+          <h2>Fill it up a bit!</h2>
+        </div>
+      </Typography>
+    );
+  }
 
   return (
     <div>
@@ -33,12 +51,22 @@ function Basket() {
               </Typography>
             </CardContent>
             <Button
+              fullWidth
               variant="contained"
               component={Link}
               to="/checkout"
               color="primary"
             >
               <b>Go to Checkout</b>
+            </Button>
+            <Button
+              fullWidth
+              variant="contained"
+              component={Link}
+              to="/products"
+              color="secondary"
+            >
+              <b>Back to products</b>
             </Button>
           </Card>
         </div>
@@ -61,6 +89,13 @@ function Basket() {
                   <b> Price: {item.price} €</b>
                 </Typography>
               </CardContent>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleRemoveFromBasket(item.id)}
+              >
+                Remove from Basket
+              </Button>
             </Card>
           </Grid>
         ))}
