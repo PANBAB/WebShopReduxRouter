@@ -94,7 +94,7 @@ function Products() {
               <CardActions>
                 <Button
                   size="small"
-                  color="secondary"
+                  color="primary"
                   variant="contained"
                   component={Link}
                   to={url}
@@ -104,7 +104,7 @@ function Products() {
 
                 <Button
                   size="small"
-                  color="secondary"
+                  color="primary"
                   variant="outlined"
                   onClick={() => onAddToBasket({ id, name, price, image })}
                 >

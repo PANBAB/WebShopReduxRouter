@@ -64,7 +64,7 @@ function Basket() {
               variant="contained"
               component={Link}
               to="/products"
-              color="secondary"
+              color="warning"
             >
               <b>Back to products</b>
             </Button>
@@ -91,7 +91,7 @@ function Basket() {
               </CardContent>
               <Button
                 variant="contained"
-                color="secondary"
+                color="error"
                 onClick={() => handleRemoveFromBasket(item.id)}
               >
                 Remove from Basket

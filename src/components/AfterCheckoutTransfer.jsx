@@ -2,6 +2,7 @@ import React from "react";
 import "../components/Hrt.css";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import UndoIcon from "@mui/icons-material/Undo";
 
 function AfterCheckoutTransfer() {
   return (
@@ -14,6 +15,7 @@ function AfterCheckoutTransfer() {
       </div>{" "}
       <h2>Redirecting you to the payment page</h2>
       <Button variant="contained" color="warning">
+        <UndoIcon />
         <Link to="/">Click here to go back</Link>
       </Button>
     </div>

@@ -64,7 +64,7 @@ const DumbellSetReview = ({ productId }) => {
 
       <AddCommentRoundedIcon color="primary" />
       <TextField
-        label="Give your opinion about this dumbell set"
+        label="Do they hit hard? Do they protect your hands? Do they smell?"
         value={newReview}
         onChange={handleNewReviewChange}
         margin="dense"

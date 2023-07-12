@@ -5,7 +5,7 @@
 .Navbar{
 background-color: black;
 border-radius: 1em; 
-display: flex;
+display: block;
 justify-content: space-between;
 align-items: center;
 padding: 0 1em;

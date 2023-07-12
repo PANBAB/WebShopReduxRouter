@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { TextField, Button, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
+import CancelIcon from "@mui/icons-material/Cancel";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 function CheckoutForm() {
   const [formData, setFormData] = useState({
@@ -125,8 +127,13 @@ function CheckoutForm() {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" size="medium">
+              <CheckCircleOutlineIcon />
               <Link to="/after-checkout-transfer">Submit</Link>
+            </Button>
+            <Button variant="contained" color="warning">
+              <CancelIcon />
+              <Link to="/basket">Cancel</Link>
             </Button>
           </Grid>
         </Grid>

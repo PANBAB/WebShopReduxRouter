@@ -8,7 +8,7 @@ const ChalkReview = () => {
       <Typography variant="h2" component="h2" gutterBottom>
         There is really no need to review this product,<br></br> this is chalk!
         <br></br>
-        Have some fun.
+        Try to enjoy life!
       </Typography>
 
       <Button

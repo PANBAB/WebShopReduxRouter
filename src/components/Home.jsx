@@ -15,7 +15,7 @@ const Home = () => {
         <p>
           Here you can find exercise equipment with fictional prices,<br></br>{" "}
           but it a nice idea to make something for exercise and sell "exercise
-          equipment". Thank you.
+          equipment". Have fun!
         </p>
         <Button
           variant="contained"

@@ -1,15 +1,17 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { auth } from "../src/firebase_setup/firebase.js";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../src/redux/AuthSlice.jsx";
 
 const ResponsiveAppBar = () => {
-  const navigate = useNavigate();
   const auth1 = useSelector((state) => state.auth.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function handleSignOut() {
     signOut(auth)
@@ -22,6 +24,13 @@ const ResponsiveAppBar = () => {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  const hideAppBarPages = ["/signin", "/checkout", "/after-checkout-transfer"];
+  const shouldHideAppBar = hideAppBarPages.includes(location.pathname);
+
+  if (shouldHideAppBar) {
+    return null;
   }
 
   return (
