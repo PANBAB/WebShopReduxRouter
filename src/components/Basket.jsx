@@ -16,7 +16,7 @@ function Basket() {
   const dispatch = useDispatch();
 
   const totalPrice = basket
-    .reduce((acc, item) => acc + item.price, 0)
+    .reduce((acc, item) => acc + parseFloat(item.price), 0)
     .toFixed(2);
 
   const handleRemoveFromBasket = (itemId) => {
