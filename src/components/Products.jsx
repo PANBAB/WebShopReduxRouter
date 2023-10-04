@@ -50,7 +50,7 @@ function Products() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://y9vmo.wiremockapi.cloud/json/1"
+          "https://5koe5.wiremockapi.cloud/json/1"
         );
         const data = response.data;
         setProducts(data);

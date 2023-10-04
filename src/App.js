@@ -17,6 +17,9 @@ import ChalkReview from "./components/reviews/ChalkReview";
 import JumpRopeReview from "./components/reviews/JumpRopeReview";
 import BoxingGlovesReview from "./components/reviews/BoxingGlovesReview";
 import MedicineBallReview from "./components/reviews/MedicineBallReview";
+import WeightPlatesReview from "./components/reviews/WeightPlatesReview";
+import WorkoutGlovesReview from "./components/reviews/WorkoutGlovesReview";
+import ExerciseRollerReview from "./components/reviews/ExerciseRollerReview";
 import LoginHome from "./components/after_login/LoginHome";
 import Checkout from "./components/Checkout";
 import AfterCheckoutTransfer from "./components/AfterCheckoutTransfer";
@@ -49,6 +52,15 @@ function App() {
         <Route
           path="/after-checkout-transfer"
           element={<AfterCheckoutTransfer />}
+        />
+        <Route path="/weight-plates-review" element={<WeightPlatesReview />} />
+        <Route
+          path="/workout-gloves-review"
+          element={<WorkoutGlovesReview />}
+        />
+        <Route
+          path="/exercise-roller-review"
+          element={<ExerciseRollerReview />}
         />
       </Routes>
     </div>

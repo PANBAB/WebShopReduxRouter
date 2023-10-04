@@ -69,21 +69,21 @@
       "name": "Weight Plates 20kg/per 1pcs",
       "price": "60.99",
       "image": "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      "url" :"/yoga-mat-review"
+      "url" :"/weight-plates-review"
     },
     {
       "id": "11",
       "name": "Workout gloves",
       "price": "19.99",
       "image": "https://images.unsplash.com/photo-1557127972-1c446ea89ea5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
-      "url" :"/yoga-mat-review"
+      "url" :"/workout-gloves-review"
     },
     {
       "id": "12",
       "name": "Exercise roller",
       "price": "27.99",
       "image": "https://plus.unsplash.com/premium_photo-1673211509095-ff4c807f6cfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
-      "url" :"/yoga-mat-review"
+      "url" :"/exercise-roller-review"
     }
    
   ]
