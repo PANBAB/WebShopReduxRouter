@@ -83,11 +83,13 @@ const About = () => {
                   What I do now - Web Development
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Used a lot of my time to learn web development and I got the
-                  grasp of the basics, started to learn Bootstrap, Tailwind and
-                  continued with getting some experience in React. High
-                  competency in using React resulted in knowing Recoil and
-                  understanding Redux.
+                  In the past year, I've honed my coding skills, collaborating
+                  with fellow programmers while also independently developing
+                  various applications. Learning and getting a foundation in
+                  JavaScript, React, and associated libraries, I've also
+                  acquired hands-on experience in Docker, Firebase, and
+                  ExpressJS. Let's be honest, I am trying to learn and land a
+                  job as a fronted developer.
                 </Typography>
               </CardContent>
             </Card>

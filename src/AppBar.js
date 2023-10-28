@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, AppBar, Toolbar, Typography } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { auth } from "../src/firebase_setup/firebase.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../src/redux/AuthSlice.jsx";
 
-const ResponsiveAppBar = () => {
+const Navbar = () => {
   const auth1 = useSelector((state) => state.auth.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,41 +34,74 @@ const ResponsiveAppBar = () => {
   }
 
   return (
-    <div className="Navbar">
-      <ul>
-        <Button variant="outlined">
-          <Link to="/">Home</Link>
-        </Button>
-        <Button variant="outlined">
-          <Link to="/products">Products</Link>
-        </Button>
-        <Button variant="outlined">
-          <Link to="/About">About</Link>
-        </Button>
+    <AppBar position="static" style={styles.navbar}>
+      <Toolbar>
+        <Typography variant="h6">
+          <Link to="/" style={styles.link}>
+            Home
+          </Link>
+        </Typography>
+        <Typography variant="h6">
+          <Link to="/products" style={styles.link}>
+            Products
+          </Link>
+        </Typography>
+        <Typography variant="h6">
+          <Link to="/About" style={styles.link}>
+            About
+          </Link>
+        </Typography>
 
         {auth1 ? (
           <>
-            <Button variant="outlined">
-              <Link to="/basket">Basket</Link>
-            </Button>
+            <Typography variant="h6">
+              <Link to="/basket" style={styles.link}>
+                Basket
+              </Link>
+            </Typography>
 
-            <Button variant="contained" onClick={handleSignOut}>
+            <Button
+              variant="contained"
+              onClick={handleSignOut}
+              style={styles.signOutButton}
+            >
               Sign Out
             </Button>
           </>
         ) : (
           <>
-            <Button variant="outlined">
-              <Link to="/login">Login</Link>
-            </Button>
-            <Button variant="outlined">
-              <Link to="/signin">Register</Link>
-            </Button>
+            <Typography variant="h6">
+              <Link to="/login" style={styles.link}>
+                Login
+              </Link>
+            </Typography>
+            <Typography variant="h6">
+              <Link to="/signin" style={styles.link}>
+                Register
+              </Link>
+            </Typography>
           </>
         )}
-      </ul>
-    </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 
-export default ResponsiveAppBar;
+const styles = {
+  navbar: {
+    background: "linear-gradient(to right, #ffb703, #fb8500)",
+    display: "block",
+  },
+  link: {
+    textDecoration: "none",
+    color: "white",
+    margin: "0 10px",
+  },
+  signOutButton: {
+    backgroundColor: "teal",
+    color: "white",
+    marginLeft: "10px",
+  },
+};
+
+export default Navbar;
