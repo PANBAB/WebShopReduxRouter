@@ -16,7 +16,6 @@ import {
   Typography,
   Button,
   CardActions,
-  IconButton,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { addToBasket } from "../redux/BasketSlice";
@@ -27,10 +26,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const [productsPerRow, setProductsPerRow] = useState(3); // Default to 3 products per row
+  const [productsPerRow, setProductsPerRow] = useState(3);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const basket = useSelector((state) => state.basket.value);
+  // const basket = useSelector((state) => state.basket.value);
   const isLoggedIn = useSelector((state) => state.auth.value);
   const [open, setOpen] = React.useState(false);
 
@@ -85,12 +84,14 @@ function Products() {
         <Button
           variant={productsPerRow === 3 ? "contained" : "outlined"}
           onClick={() => changeProductsPerRow(3)}
+          color="warning"
         >
           <MoreHorizTwoToneIcon />
         </Button>
         <Button
           variant={productsPerRow === 4 ? "contained" : "outlined"}
           onClick={() => changeProductsPerRow(4)}
+          color="warning"
         >
           <MoreVertTwoToneIcon />
         </Button>
@@ -165,9 +166,8 @@ function Products() {
               ) : (
                 <CardActions>
                   <Button
-                    on
                     size="small"
-                    color="primary"
+                    color="warning"
                     disableElevation
                     variant="contained"
                     component={Link}

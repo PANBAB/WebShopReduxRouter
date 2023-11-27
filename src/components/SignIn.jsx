@@ -3,6 +3,10 @@ import { getFirestore } from "firebase/firestore";
 import { firebaseApp } from "../../src/firebase_setup/firebase.js";
 import { auth } from "../../src/firebase_setup/firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import KeyboardReturnOutlinedIcon from "@mui/icons-material/KeyboardReturnOutlined";
+import LoginIcon from "@mui/icons-material/Login";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -25,6 +29,10 @@ function SignIn() {
     setRepeatPassword(event.target.value);
   };
 
+  const redirectToAfterRegister = () => {
+    window.location.href = "/after-register-transfer";
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
@@ -32,6 +40,7 @@ function SignIn() {
         const user = userCredential.user;
 
         console.log(user);
+        redirectToAfterRegister();
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +70,22 @@ function SignIn() {
 
   return (
     <div className="signin-container">
-      <h2>Register</h2>
+      <h1>Sign Up</h1>
+
+      <h2>
+        {" "}
+        Already have an account?{" "}
+        <Button
+          variant="contained"
+          color="warning"
+          size="small"
+          component={Link}
+          to="/login"
+          disableElevation
+        >
+          <b>Log In</b>
+        </Button>
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <label>
@@ -81,7 +105,7 @@ function SignIn() {
             value={password}
             onChange={handlePasswordChange}
             onBlur={validatePassword}
-            placeholder="Enter password"
+            placeholder="Password(min 6 characters)"
           />
         </label>
         <br />
@@ -96,9 +120,12 @@ function SignIn() {
         </label>
         <span className="error">{passwordError}</span>
         <br />
-        <button type="submit">
-          <b>Register</b>
-        </button>
+        <Button color="warning" size="large" type="submit">
+          <b>Sign Up</b>
+        </Button>
+        <Button variant="contained" color="warning" component={Link} to="/">
+          <KeyboardReturnOutlinedIcon />
+        </Button>
       </form>
     </div>
   );

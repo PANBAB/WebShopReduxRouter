@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
+import { Button } from "@mui/material";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../src/firebase_setup/firebase.js";
 import "./Login.css";
@@ -8,6 +9,7 @@ import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
@@ -23,11 +25,22 @@ function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-
         navigate("/login-home");
       })
       .catch((error) => {
-        console.log(error);
+        const errorCode = error.code;
+        if (errorCode === "auth/user-not-found") {
+          setErrorMessage("The email you are entering is not registered.");
+        } else if (errorCode === "auth/wrong-password") {
+          setErrorMessage(
+            "The password you entered is incorrect. Please try again."
+          );
+        } else {
+          setErrorMessage(
+            "An error occurred. Please try again. Email and password you entered may be incorrect"
+          );
+        }
+        console.error(error);
       });
 
     console.log(`Email: ${email}, , Password: ${password}`);
@@ -57,16 +70,16 @@ function Login() {
           />
         </label>
         <br />
-        <button type="submit">
+        <Button variant="contained" color="warning" type="submit">
           <b>Login</b>
-        </button>
+        </Button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
       </form>
       <h4>Don't have an account? Please click the button below!</h4>
       <Link to="/signin">
-        {" "}
-        <button>
-          <b>Register</b>
-        </button>
+        <Button variant="outlined" color="warning" size="large">
+          <b>Sign Up</b>
+        </Button>
       </Link>
     </div>
   );

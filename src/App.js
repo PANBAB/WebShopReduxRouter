@@ -23,6 +23,7 @@ import ExerciseRollerReview from "./components/reviews/ExerciseRollerReview";
 import LoginHome from "./components/after_login/LoginHome";
 import Checkout from "./components/Checkout";
 import AfterCheckoutTransfer from "./components/AfterCheckoutTransfer";
+import AfterRegisterTransfer from "./components/AfterRegisterTransfer";
 
 function App() {
   return (
@@ -61,6 +62,10 @@ function App() {
         <Route
           path="/exercise-roller-review"
           element={<ExerciseRollerReview />}
+        />
+        <Route
+          path="/after-register-transfer"
+          element={<AfterRegisterTransfer />}
         />
       </Routes>
     </div>

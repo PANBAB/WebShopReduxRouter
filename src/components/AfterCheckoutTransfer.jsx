@@ -16,7 +16,7 @@ function AfterCheckoutTransfer() {
       <h2>Redirecting you to the payment page</h2>
       <Button variant="contained" color="warning">
         <UndoIcon />
-        <Link to="/">Click here to go back</Link>
+        <Link to="/login-home">Click here to go back</Link>
       </Button>
     </div>
   );
