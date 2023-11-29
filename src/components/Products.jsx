@@ -135,11 +135,12 @@ function Products() {
                     color="primary"
                     variant="outlined"
                     onClick={() => onAddToBasket({ id, name, price, image })}
+                    endIcon={<ShoppingCartIcon />}
                   >
-                    Add to
-                    <ShoppingCartIcon fontSize="small" />
+                    <b> ADD To</b>
                     <Snackbar
                       open={open}
+                      color="info"
                       autoHideDuration={3000}
                       onClose={handleSnackbarClose}
                     >
@@ -152,7 +153,7 @@ function Products() {
                         <Button
                           onClick={() => Navigate("/basket")}
                           variant="contained"
-                          color="error"
+                          color="warning"
                           size="small"
                           sx={{ marginLeft: "10px" }}
                         >

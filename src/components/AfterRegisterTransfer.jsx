@@ -22,7 +22,7 @@ function AfterRegisterTransfer() {
       </div>{" "}
       <h2>You will be redirected shortly to the home page.</h2>
       <Button variant="contained" color="warning">
-        <Link to="/login-home">Click here if you don't want to wait</Link>
+        <Link to="/login-home">Skip waiting</Link>
       </Button>
     </div>
   );

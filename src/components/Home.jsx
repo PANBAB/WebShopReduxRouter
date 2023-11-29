@@ -17,7 +17,12 @@ const Home = () => {
           but it a nice idea to make something for exercise and sell "exercise
           equipment". Have fun!
         </p>
-        <Button component={Link} to="/products" color="primary">
+        <Button
+          variant="outlined"
+          component={Link}
+          to="/products"
+          color="warning"
+        >
           <b>Explore Products</b>
         </Button>
       </div>

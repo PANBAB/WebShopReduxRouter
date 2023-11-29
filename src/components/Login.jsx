@@ -49,7 +49,7 @@ function Login() {
   return (
     <div className="login-container">
       <h2>
-        <LoginIcon />
+        <LoginIcon color="warning" />
       </h2>
       <form onSubmit={handleSubmit}>
         <label>

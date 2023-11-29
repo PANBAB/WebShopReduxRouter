@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button, AppBar, Toolbar, Typography } from "@mui/material";
+import { Button, AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { auth } from "../src/firebase_setup/firebase.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../src/redux/AuthSlice.jsx";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
 const Navbar = () => {
   const auth1 = useSelector((state) => state.auth.value);
@@ -60,13 +61,14 @@ const Navbar = () => {
               </Link>
             </Typography>
 
-            <Button
+            <IconButton
               variant="contained"
+              size="small"
               onClick={handleSignOut}
               style={styles.signOutButton}
             >
-              Sign Out
-            </Button>
+              <LogoutRoundedIcon />
+            </IconButton>
           </>
         ) : (
           <>

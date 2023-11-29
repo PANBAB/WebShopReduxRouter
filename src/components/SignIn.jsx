@@ -4,9 +4,8 @@ import { firebaseApp } from "../../src/firebase_setup/firebase.js";
 import { auth } from "../../src/firebase_setup/firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, startIcon } from "@mui/material";
 import KeyboardReturnOutlinedIcon from "@mui/icons-material/KeyboardReturnOutlined";
-import LoginIcon from "@mui/icons-material/Login";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -123,8 +122,14 @@ function SignIn() {
         <Button color="warning" size="large" type="submit">
           <b>Sign Up</b>
         </Button>
-        <Button variant="contained" color="warning" component={Link} to="/">
-          <KeyboardReturnOutlinedIcon />
+        <Button
+          variant="contained"
+          color="warning"
+          component={Link}
+          to="/"
+          startIcon={<KeyboardReturnOutlinedIcon />}
+        >
+          <b>Back</b>
         </Button>
       </form>
     </div>
